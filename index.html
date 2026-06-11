@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Không gian thực tế</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #e5eefb;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+    p.lead {
+      margin: 0 0 18px;
+      color: #cbd5e1;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .tab {
+      border: 1px solid #334155;
+      background: #111827;
+      color: #e5eefb;
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .tab.active {
+      background: #38bdf8;
+      color: #082f49;
+      border-color: #38bdf8;
+    }
+    .panel {
+      display: none;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .panel.active { display: block; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #172033;
+      border: 1px solid #243247;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.35);
+    }
+    .card img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card figcaption {
+      padding: 10px 12px;
+      color: #dbeafe;
+      font-size: 14px;
+    }
+    .small {
+      color: #bfdbfe;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Không gian thực tế</h1>
+    <p class="lead">Đã cập nhật sang 5 ảnh từ thư mục ảnh/ cho tab này.</p>
+
+    <div class="tabs" role="tablist" aria-label="Danh mục ảnh">
+      <button class="tab active" type="button" data-tab="real">Không gian thực tế</button>
+      <button class="tab" type="button" data-tab="all">Tất cả ảnh</button>
+    </div>
+
+    <section class="panel active" id="real" role="tabpanel">
+      <div class="grid">
+        <figure class="card"><img src="ảnh/FB_IMG_1754842629246.jpg" alt="Ảnh 1 không gian thực tế"><figcaption>Ảnh 1</figcaption></figure>
+        <figure class="card"><img src="ảnh/FB_IMG_1754842639836.jpg" alt="Ảnh 2 không gian thực tế"><figcaption>Ảnh 2</figcaption></figure>
+        <figure class="card"><img src="ảnh/FB_IMG_1754842647739.jpg" alt="Ảnh 3 không gian thực tế"><figcaption>Ảnh 3</figcaption></figure>
+        <figure class="card"><img src="ảnh/IMG_1714478133676_1714478238651.jpg" alt="Ảnh 4 không gian thực tế"><figcaption>Ảnh 4</figcaption></figure>
+        <figure class="card"><img src="ảnh/IMG_20241020_091410.jpg" alt="Ảnh 5 không gian thực tế"><figcaption>Ảnh 5</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="panel" id="all" role="tabpanel">
+      <p class="small">Bộ sưu tập ảnh đang nằm trong thư mục ảnh/.</p>
+      <div class="grid">
+        <figure class="card"><img src="ảnh/FB_IMG_1754842629246.jpg" alt="Ảnh thư mục ảnh 1"><figcaption>FB_IMG_1754842629246.jpg</figcaption></figure>
+        <figure class="card"><img src="ảnh/FB_IMG_1754842639836.jpg" alt="Ảnh thư mục ảnh 2"><figcaption>FB_IMG_1754842639836.jpg</figcaption></figure>
+        <figure class="card"><img src="ảnh/FB_IMG_1754842647739.jpg" alt="Ảnh thư mục ảnh 3"><figcaption>FB_IMG_1754842647739.jpg</figcaption></figure>
+        <figure class="card"><img src="ảnh/IMG_1714478133676_1714478238651.jpg" alt="Ảnh thư mục ảnh 4"><figcaption>IMG_1714478133676_1714478238651.jpg</figcaption></figure>
+        <figure class="card"><img src="ảnh/IMG_20241020_091410.jpg" alt="Ảnh thư mục ảnh 5"><figcaption>IMG_20241020_091410.jpg</figcaption></figure>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.tab').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach((panel) => panel.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
